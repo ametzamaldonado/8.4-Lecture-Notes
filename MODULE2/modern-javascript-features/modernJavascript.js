@@ -13,7 +13,6 @@ By the end of this lesson you should be able to:
 
 */
 
-
 // Based on the reading, what is ECMAScript?
 //  The scripting language that is the basis of JS.
 //  an association that decides the future of JS 
@@ -30,42 +29,40 @@ By the end of this lesson you should be able to:
 
 // - How could you use destructuring to create three new variables from the following array?
 
-
- const astronauts = ["Jessica Watkins", "Robert Shane", "Nicole Mann"];
-//  // This is the old way of declaring variables
+const astronauts = ["Jessica Watkins", "Robert Shane", "Nicole Mann"];
+// This is the old way of declaring variables
 // // let one = astronauts[0];
 // // let two = astronauts[1];
 // // let three = astronauts[2];
-// // below is the same thing
-let [ one, two, three ]  = astronauts;
+
+// New way, does the same thing:
+const [one, two, three] = astronauts;
 console.log(one, two);
 
 // - How could you use destructuring to create three new variables that represent each key-value pair in the following object?
 
-  
 const astronaut = {
     name: "Jessica Watkins",
     isActive: true,
     occupation: "Geologist",
 };
+
+// Old Way:
+  // let name = astronaunt.name;
+  // let isActive = astronaunt.isActive;
+
+// New Way:
 const { name, isActive } = astronaut;
-
-// long way of writing 49 is below
-
-// let name = astronaut.name;
-// let isActive = astronaut.isActive;
-
-
+console.log(name); // not sure why name is crossed out but the code works!
 
 // - What are some benefits of using destructuring? Are there any downsides?
-//   Destructuring syntax can seem backwards;
-//   We need to assign variable names that coincide with object keys
-//   Destructuring is less code - its very efficent.
+  // Destructuring syntax can seem backwards;
+  // We need to assign variable names that coincide with object keys
+  // Destructuring is less code - its very efficent.
 
 // - How can you apply destructuring to the following function?
 
-function getAstronautActivityStatus({ name = "no name", isActive }) {
-
+function getAstronautActivityStatus({ name = "no name", isActive }) { // Takes these values from the object being passed.
   let result = "";
   if (isActive) {
     result = `${name} is active.`;
@@ -90,6 +87,7 @@ const wholeName = {
   last,
 }
 
+console.log(wholeName); //> {first: 'Nicole', middle: 'Aunapu', last: 'Mann'}
 
 
 
@@ -104,28 +102,43 @@ const wholeName = {
 
 // - The function below expects that sometimes `name` will not be provided. How can you update the `greet()` function so that it uses default parameters?
 
-function greet(name = "space cadet") {
-  return `Welcome to NASA, ${name}!`;
+// function greet(name = "space cadet"){
+//     let results;
+//     if (name){
+//         result = `Welcome to NASA, ${name}!`
+//     }
+//     return result;
+// }
+
+// Shortened to: (don't need a result variable because we will always return a sentence. See default value)
+// function greet(name = "space cadet"){
+//     if (name){
+//         return `Welcome to NASA, ${name}!`
+//     }
+// }
+
+// Shortened to: (because a default value is being provided!)
+function greet(name = "space cadet"){
+    return `Welcome to NASA, ${name}!`
 }
 
-// console.log(greet("Jessica")); //> "Welcome to NASA, Jessica!"
+console.log(greet("Jessica")); //> "Welcome to NASA, Jessica!"
+console.log(greet()); //> "Welcome to NASA, space cadet!"
 
-// console.log(greet()); //> "Welcome to NASA, space cadet!"
-
+// --------------------- Using different method: --------------------- //
 
 // - Convert the `greet()` function from above to use the arrow function syntax instead of the function declaration syntax.
 const greet2 = (name = "space cadet") =>  {
   return `Welcome to NASA, ${name}!`;
-  
-  
-  //   Is it possible to write this function on a single line?
 }
-// We can write short functions on one line like so - in do we can omit the `return` and `{}` 
-// but the function must be on one line;
+
+//   Is it possible to write this function on a single line?
+// We can write short functions on one line like so - in do we can omit the `return` and `{}`; but the function must be on one line;
+
+// BELOW keeps a default value: 
 const greet3 = (name = "space cadet") => `Welcome to NASA, ${name}`
 
-
-
+console.log(greet3("Kenya!!"))
 
 
 // - Are there any benefits to using the arrow function syntax? Are there any downsides?
@@ -146,7 +159,10 @@ const beforeEarth = ["Mercury", "Venus"];
 const afterEarth = ["Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
 const allPlanets = [...beforeEarth, "Earth", ...afterEarth];
 
+console.log(allPlanets); //> [ "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus",  "Neptune" ];
+
 // Without spread the results would be 
+// AKA: const allPlanets = [beforeEarth, "Earth", afterEarth];
 /*
   [
     [ "Mercury", "Venus" ],  <---- notice this is still an array!
@@ -154,6 +170,9 @@ const allPlanets = [...beforeEarth, "Earth", ...afterEarth];
     [ "Mars", "Jupiter", "Saturn", "Uranus",  "Neptune" ]  < ------ same here!
   ]
 */
+
+// --------------------- SPREAD EXAMPLE --------------------- //
+
 //  WE can also SPREAD objects and their key values just like we can with Arrays
 const physicalRequirements = {
   visualAcuity: "20/20",
@@ -169,11 +188,20 @@ const workRequirements = {
 
 const requirements = {
   mustBeUSCitizen: true,
-  ...physicalRequirements,
+  ...physicalRequirements, //keys in this object are "spread" into this new object
   ...workRequirements,
 };
 console.log(requirements)
+/*
+{
+    mustBeUSCitizen: true,
+    visualAcuity: '20/20',
+    degree: 'STEM field',
+    minimumYearsOfExperience: 3
+}
+*/
 
+// ------------------------------------------------------------ //
 
 // - Take a look at the code below. What do you expect will be logged to the console?
 // This is REST - which is used primarily to access the REST of the arguments in a fuction
@@ -190,14 +218,13 @@ function getPlanetsCount(...whatever) {
 }
 
 const count = getPlanetsCount("Mercury", "Venus", "Earth", "Mars");
+console.log(count);
 
 
-
-
+// ----------------------- REST EXAMPLE ----------------------- //
 // we can also use REST with array destructuring assignment 
 function listAstronauts(nasaPeople) {
   const [first, second, third, ...others] = nasaPeople;
-  console.log(first, second)
   return `${first}, ${second}, ${third}, and ${others.length} more!`;
 }
 
@@ -210,6 +237,9 @@ const astronauts2 = [
 ];
 console.log(listAstronauts(astronauts2));
 console.log("stop here")
+
+
+// The function accepts an array under the name astronauts. Destructuring is then applied to this array to create a 'first', 'second', and 'others' variable. The 'others' variable is also an array of the REST of the astronauts.
 
 
 

@@ -1,3 +1,4 @@
+// 3rd STEP !!!
 const pgp = require("pg-promise")();
 require("dotenv").config();
 // config object to grab all our environment vars for postgres
@@ -8,8 +9,6 @@ const cn = {
     user: process.env.PG_USER,
 }
 // invoke PG-promise with our connection object
-
 const db = pgp(cn);
-
 
 module.exports = db;

@@ -1,0 +1,18 @@
+.container {
+  display: grid;
+  /*grid-template-columns: 2fr 2fr 2fr;*/
+  grid-template-columns: repeat(2, 2fr);
+  border: 10px dotted black;
+  gap: 15px;
+  grid-auto-rows: minmax(10px, auto);
+}
+.one {
+    grid-column: 1/2;
+}
+
+.child {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: lightblue;
+  border: 2px solid red;
+}

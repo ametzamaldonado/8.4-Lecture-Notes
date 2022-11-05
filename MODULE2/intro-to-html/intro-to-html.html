@@ -14,6 +14,9 @@
 
 <!-- It is a special declaration that we put at the top to say which version of HTML we're using. -->
 
+<html></html>
+<head></head>
+
 
 <!-- What is the purpose of the html element? -->
 <!-- They denote that everything between their tags is html -->
@@ -32,16 +35,25 @@
 
 
 <!-- Is the following HTML valid? Why or why not? -->
+    <!--Incorrect because the <head> and <body> tags need to be inside of the html opening and closing tags-->
 
-<html>
+        <html>
 
-<head></head>
-<body></body>
-
-</html>
-
-<!-- If HTML code is invalid, will you see an error? -->
-
+        </html>
+            
+        <head></head>
+        <body></body>
+            
+    <!--Corrected:-->
+            
+        <html>
+            <head></head>
+            <body></body>
+        </html>
+                    
+ <!--If HTML code is invalid, will you see an error?-->
+    <!--No, HTML will try and display the code being passed through regardless-->
+            
 <!-- The following is a paragraph element. How can you tell the difference between the opening and closing tags? -->
 
 <p>
@@ -63,12 +75,31 @@ li - List item, child element of our ordered or unordered list
 
 <!-- What are some other self-closing tags? -->
 
+<br />
+<hr /> 
+<img />
+<input />
+<link />
+<source />
+<area />
+<base />
+<embed />
+<meta />
+<track />
+<wbr />
+<param />
+
 <!-- Describe the img element below. What is src? What is alt? -->
 
 <img src="https://placekitten.com/g/200/300" alt="Picture of a kitten." />
 
+<!--
+src - Specifies the path to the image
+alt - Specifies an alternate text/discription for the image, if the image for some reason cannot be displayed
+-->
+
 <!-- What is an HTML attribute? -->
-<!-- Attributes provide additional information about elements -->
+    <!-- Attributes provide additional information about elements -->
 
 <!-- Take a look at the HTML below. The h1 element is a sibling of the p element. What does this mean? -->
 

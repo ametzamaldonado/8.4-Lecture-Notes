@@ -23,13 +23,13 @@
 
 // Kinds of errors 
 
-
-// conts newVar = 10;  // <----- what kind of error will this throw? SyntaxError we misspelled const
+// conts newVar = 10; 
+  // <----- what kind of error will this throw? SyntaxError because we misspelled const
 
 // let otherVar = true;
-// otherVar.indexOf("wont work")  // <------- How about this one?  TypeError because otherVar is a BOOLEAN and .indexOf() is an array method
+// otherVar.indexOf("wont work")  // <------- How about this one?  TypeError because 'otherVar' is a BOOLEAN and .indexOf() is an array method
 
-// burrito.sauce;   // <------- What kind of error will this throw? ReferenceError because buritto is never defined let alone burito.sauce
+// burrito.sauce;   // <------- What kind of error will this throw? ReferenceError because 'buritto' is never defined let alone burito.sauce
 
 
 function getProductDescription(product) {
@@ -48,10 +48,10 @@ function getProductDescription(product) {
 // This function may seem fine, but imagine trying to use it. How would you know an error has occurred? Take a look at the invocations below and consider how this function could be used.
 
 
-// console.log(getProductDescription({ name: "Shirt", priceInCents: 2499 })); //> "Shirt - $24.99"
-// console.log(getProductDescription({ name: "Shirt" })); //> "Product requires a name and a price."
-// getProductDescription(); //> Uncaught TypeError: Cannot read property 'name' of undefined
-// console.log("this should log")
+console.log(getProductDescription({ name: "Shirt", priceInCents: 2499 })); //> "Shirt - $24.99"
+console.log(getProductDescription({ name: "Shirt" })); //> "Product requires a name and a price."
+getProductDescription(); //> Uncaught TypeError: Cannot read property 'name' of undefined
+console.log("this should log")
 
 // You can't just check whether or not a string is returned; whether or not the inserted object has the right keys, a string will be returned. However, you also have a case where a `TypeError` would occur.
 
@@ -61,16 +61,19 @@ function getProductDescription(product) {
 
 // It's possible to write your own errors quit easily. The `throw` keyword expects some text to come after it which will translate to an error.
 
+function getProductDescription2(product){
+  if (!product.name || !product.priceInCents){
+      throw "Product requires a name and a price."
+  }
+  const priceInDollars = ((product.priceInCents / 100).toFixed(2));
+  return `${product.name} - $${priceInDollars}`;
+}
 
+console.log(getProductDescription2({ name: "Shirt", priceInCents: 2499 })); //> "Shirt - $24.99"
+console.log(getProductDescription2({ name: "Shirt" })); //> Uncaught 'Product requires a name and price.'
+console.log(getProductDescription2()); //> Uncaught TypeError: Cannot read property 'name' of undefined
 
-
-
-
-// console.log(getProductDescription2({ name: "Shirt", priceInCents: 2499 })); //> "Shirt - $24.99"
-// console.log(getProductDescription2({ name: "Shirt" })); //> Uncaught 'Product requires a name and price.'
-// console.log(getProductDescription2()); //> Uncaught TypeError: Cannot read property 'name' of undefined
-
-// console.log("executing the rest of my code!!!!")
+console.log("executing the rest of my code!!!!")
 
 
 // The `throw` keyword stops the execution of your code like any other error would. In the function above, the function now has two states:
@@ -86,31 +89,32 @@ function getProductDescription(product) {
 
 //  what will happen here?
 
-// try {
-//     throw "this is an error";
-// } catch(error) {
-//     console.log(error);
-// }
+try {
+    throw "this is an error";
+} catch(error) {
+    console.log(error);
+}
 
 // what about here?
-// const greaterThanTwo = (num) => {
-//     if (typeof num !== "number") {
-//         throw("Error: num is not a number in line 105")
-//     }
-//     return num > 2 ? true : false
-// }
+const greaterThanTwo = (num) => {
+    if (typeof num !== "number") {
+        throw("Error: num is not a number in line 105")
+    }
+    return num > 2 ? true : false
+}
 // // try to run line 111 
-// try {
-//     console.log(greaterThanTwo(2))
-// } catch (error) {
-// // if we CATCH an error from 111 we run 114
-//     console.log(error, "<-------- this is the error message")
-// }
+try {
+    console.log(greaterThanTwo(2))
+} catch (error) {
+// if we CATCH an error from 111 we run 114
+    console.log(error, "<-------- this is the error message")
+}
 
-// greaterThanTwo('2');
-
+greaterThanTwo('2');
 
 // console.log("this logs because the code will still execute even though we have an error thrown")
+
+//------------------------------------------------------------------------//
 
 function getProductDescription2(product) {
     if (!product.name || !product.priceInCents) {
@@ -141,7 +145,6 @@ console.log(result);
 // A `try/catch` block allows you to _try out some code_ and, if no errors are thrown, the code will continue on. If an error is thrown, _the error will be caught_ and some different code can be run. Then, your code will continue. A `try/catch` block is somewhat similar to an `if/else` statement: if the code works, run the code inside of the `try` block; otherwise, run the code in the `catch` block.
 
 // For example, the code above will have the following output:
-
 
 // An error occurred!
 // Product requires a name and price.

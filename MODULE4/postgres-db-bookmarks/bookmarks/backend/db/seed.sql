@@ -1,4 +1,6 @@
 \c bookmarks_dev
+-- where we create data - 2nd STEP!!
+-- connects to database
 
 INSERT INTO bookmarks (name, url, category, is_favorite) VALUES
 ('MDN', 'https://developer.mozilla.org/en-US/', 'educational', true),
@@ -39,3 +41,16 @@ VALUES
 (2,5),
 (3,6),
 (2,7);
+
+
+-- NEXT STEPS!!
+-- to run the above code do the following: 'psql -U postgres -f db/seed.sql'
+-- need to install 'npm i pg-promise'
+-- remember to then 'touch db/dbConfig.js'
+
+-- The below need to be in our .env file!!!
+-- PORT=3003
+-- PG_HOST=localhost
+-- PG_PORT=5432
+-- PG_DATABASE=bookmarks_dev
+-- PG_USER=postgres

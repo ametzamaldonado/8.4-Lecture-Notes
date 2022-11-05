@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("express"); // 6th Step!!
 const bookmarks = express.Router();
 const reviewsController = require("./reviewsController.js");
 const {
@@ -9,15 +9,17 @@ const {
   updateBookmark
 } = require("../queries/bookmarks.js");
 const { checkName, checkBoolean, validateUrl } = require("../validations/checkBookmarks")
-// Extends our app so that we can create a new route for our BOOKMARKS resource
+// ^(Imports) Extends our app so that we can create a new route for our BOOKMARKS resource
 // we need to make this ASYNC as well
 bookmarks.use("/:bookmarkId/reviews", reviewsController);
 
+// we need to make this ASYNC as well
 bookmarks.get("/", async (req, res) => {
   const allBookmarks = await getAllBookmarks();
+  // res.json({ status:'ok' })
   if (allBookmarks[0]) {
-    // if there is one index that gets returned then the data exists - John P 8/2/2022
-    // an empty array is TRUTHY - so we need to check for an element
+    // if we have data, then return it
+    // an empty array is TRUTHY - so wee need to check for an element, ergo why we wrote the if condition above.
     res.status(200).json(allBookmarks);
   } else {
     res.status(500).json({ error: "server error!" });
@@ -51,15 +53,17 @@ bookmarks.delete("/:id", async (req, res) => {
   if (deletedBookmark.id) {
     res.status(200).json(deletedBookmark)
   } else {
-    res.status(404).json("Bookmark not found!");
+    // an error will NOT have an ID and therefore return our error
+    res.status(404).json({ error: "Bookmark not found!" });
   }
 });
 
 bookmarks.put("/:id", validateUrl, checkBoolean, checkName, async (req, res) => {
   const { id } = req.params;
+  const { bookmark } = req.body;
   // updatedBookmark will either be a MASSIVE error object from SQL
   // OR it will be a bookmark with the keys and values we expected
-  const updatedBookmark = await updateBookmark(req.body, id);
+  const updatedBookmark = await updateBookmark(bookmark, id);
   if (updatedBookmark.id) {
     res.status(200).json(updatedBookmark);
   } else {

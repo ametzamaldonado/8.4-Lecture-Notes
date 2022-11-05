@@ -1,6 +1,10 @@
+// 5th STEP!!! 
+// BELOW NEED TO BE IN 'app.js'
+
 const express = require('express');
 const cors = require("cors");
 const app = express();
+
 // CONTROLLERS
 const bookmarksController = require("./controllers/bookmarksController.js");
 const usersController = require("./controllers/usersController.js");
@@ -9,9 +13,11 @@ const usersController = require("./controllers/usersController.js");
 // REMEMBER THESE MUST COME BEFORE OUR CONTROLLERS OR WE WILL HAVE A BAD TIME
 app.use(cors());
 app.use(express.json());
+// ^BOTH THESE NEED TO BE IN 'app.js'
 
-app.use("/bookmarks", bookmarksController);
+app.use("/bookmarks", bookmarksController); // <- this needs to be below 'app.use(express.json())'!!
 app.use("/users", usersController) 
+// this routes 'localhost:3003/bookmarks' to our controller 
 
 
 // Bouncer at the club - Allows requests from other origins (like our REACT APP)

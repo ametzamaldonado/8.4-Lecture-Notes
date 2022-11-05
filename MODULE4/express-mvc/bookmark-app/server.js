@@ -1,7 +1,8 @@
 const app = require("./app.js");
 
 require("dotenv").config();
-// allows us access to our .env file
+// ^ this grabs the 'dotenv' that we downloaded and immediately invoke the config
+// SIMPLIFIED: allows us access to our .env file
 
 const PORT = process.env.PORT;
 

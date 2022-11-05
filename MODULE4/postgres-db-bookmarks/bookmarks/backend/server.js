@@ -1,6 +1,9 @@
+// 4th STEP!! - basic configuration to be able to run 'nodemon server.js'
+
 const app = require("./app.js");
 
 require("dotenv").config();
+
 // Allows access to .env file and its vars;
 const PORT = process.env.PORT;
 

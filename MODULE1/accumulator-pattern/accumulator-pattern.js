@@ -25,8 +25,8 @@
 function sumAllNumbers(numbers) {
   let sum = 0;
   for (let i = 0; i < numbers.length; i++ ) {
+    //SIMPLIFIED -> sum += numbers[i];
     sum = sum + numbers[i];
-    // sum += numbers[i];  is another way of writing this!
   }
   return sum;
 }
@@ -47,6 +47,7 @@ console.log(sumAllNumbers([])); //> 0
 function presentAllStates(states) {
   let allStates = "STATES: "
   for (let i = 0; i < states.length; i++) {
+    //SIMPLIFIED -> allStates += `${states[i]}, `
     allStates = allStates + `${states[i]}, `
   }
   return allStates;
@@ -71,10 +72,9 @@ console.log(presentAllStates([]));
 function hasSpace(states) {
   let spaces = false;
   for (let i = 0; i < states.length; i++ ) {
-    console.log(states[i]) // "New York"
+    console.log(states[i]) // Goes through each string at [i] each index. Ex: "New York" 
     for (let j = 0; j < states[i].length; j++) {
-      //  we are checking each character in the string at states[i]
-      //  for an empty string
+      //Goes through each letter/character within the string at index [i], looking for an empty string
       if (states[i][j] === " ") {
         return true;
       }
@@ -95,13 +95,12 @@ Write a function that returns a new array of all the states in kebab casing.
 */
 // Lets solve this without the .replace() string method!
 function kebabCase(states) {
-  
-  // Loop through the first array 
+
   for (let i = 0; i < states.length; i++) {
-    // For EVERY index in the array - loop through and check the individual characters
     for (let j = 0 ; j < states[i].length; j ++) {
-      // check the ARRAY at index [i] and the CHARACTER in that string  at index [j] to equal " "!
-      if (states[i][j] === " ") {
+      // check the ARRAY at index [i] and the CHARACTER in that string  at index [j] if its equal to " "!
+      if (states[i][j] === " ") { // if there is a space between the characters in the states object at index[i] then,
+        
         // split the string to an array - save to a variable
         let split  = states[i].split("");
         // change the index of " " to "-"
@@ -135,8 +134,9 @@ function isValid(states) {
   for (let i = 0 ; i < states.length; i++) {
     if (states[i].length > 2) {
       onlyTwo = false;
-      break;
-      // return false also works and IS BETTER but for today - let's do it long form
+      break; /* if the array was LONG, this would ensure that if the conditional in the 'if statement' were true it would immediately return the value because of the break! 
+      
+      return false also works and IS BETTER but for today - lets do it long form */
     }
   }
   return onlyTwo

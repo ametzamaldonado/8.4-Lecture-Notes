@@ -1,5 +1,13 @@
 
+console.log("Javascript is connected"); //Only shows up on webpage console
+
+console.log(window);
+
+window.alert("Hey there, I'm an alert :)"); // Displays a pop-up window
+
 let response = window.prompt("What is your name?")
+// window.prompt() lets the user input a value for the inside question. 
+// Having it iniside of a variable allows us to store the data. 
 
 alert(`Hello ${response}! `);
 

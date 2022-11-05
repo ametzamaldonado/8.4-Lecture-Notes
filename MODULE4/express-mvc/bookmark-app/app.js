@@ -1,5 +1,19 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+
+// middleware to enable CORS on our server
+app.use(cors());
+
+// to help add to object using 'POST':
+app.use(express.json());
+
+// adding middleware
+app.use((req, res, next) => {
+    console.log("8.4 is the coolest")
+    next();
+})
+
 const bookmarksController = require("./controllers/bookmarksController.js");
 
 app.get("/", (req, res) => {

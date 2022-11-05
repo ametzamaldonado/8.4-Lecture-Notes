@@ -1,3 +1,6 @@
+-- representation of our data model, & create our database and tables
+-- (AKA blueprint for our database) - 1st STEP!
+
 DROP DATABASE IF EXISTS bookmarks_dev;
 CREATE DATABASE bookmarks_dev;
 
@@ -41,3 +44,5 @@ CREATE TABLE users_bookmarks (
     user_id INTEGER NOT NULL,
     created TIMESTAMP DEFAULT NOW()
 );
+
+-- psql -U postgres -f db/schema.sql

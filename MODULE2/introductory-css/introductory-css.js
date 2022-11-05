@@ -42,57 +42,49 @@
 
 // - Using technical language, describe how the following CSS would affect an HTML page. Feel free to look up the properties and values.
 
+// EX#1
 // h2 === selector
-//   h2 {  < ----- declaration block
-//   property --- >  border-bottom: 3px solid red; <----values
-//   }
+// h2 { <---- declaration block
+//     broder-bottom: 3px solid red ; <------ values 
+//     ^^^^^^^^^^^^^ property
+// }
   
-
-// - Using technical language, describe how the following CSS would affect an HTML page. Feel free to look up the properties and values.
-
-//   
-//   p {
+// EX#2
+// p {
 //     color: green;
 //     font-family: Helvetica, serif;
-//   }
-  
+// }
 
-// - Using technical language, describe how the following CSS would affect an HTML page. Feel free to look up the properties and values.
-
-//   
-//   p {
+// EX#3
+// p {
 //     background: yellow;
-//     height: 200px;
+//     font-family: 200px;
 //     overflow: scroll;
-//   }
-//   
+// }
 
-// - Using technical language, describe how the following CSS would affect an HTML page. Feel free to look up the properties and values.
-
-//   
-//   h1 {
+//EX#4
+// h1 { 
 //     color: red;
 //     font-size: 10px;
-//   }
+// }
 
-//   h1 {
+//EX#5
+// h1 {
 //     font-size: 40px;
 //     font-weight: bold;
-//   }
-//   
+// }
 
 // - What are the three ways you can connect CSS to an HTML page?
 
-// Inline styling  - style an element directly
+// (1) Inline styling  - style an element directly
 //    avoid!  Only styles one element AND takes precedence over others
 
-// <style> tag!  This lets us write CSS directly in HTML.  
+// (2) <style> tag!  This lets us write CSS directly in HTML.  
     //  HTML tag that lets browser know the content between is CSS;
-
-//     
-
+    
+    
 // - What attributes are required in creating a `link` element?
-// 'href' - the hyperllink reference and the 'rel' - the relation as to what the link is
+// (3) 'href' - the hyperllink reference and the 'rel' - the relation as to what the link is
 
 // - Why is creating an external stylesheet preferred to the other two methods?
     // Seperation of Concerns!  - Keep style and content seperate - easier to read and edit

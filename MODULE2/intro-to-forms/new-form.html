@@ -11,6 +11,30 @@
 <body>
     <h1>My Form</h1>
     <form >
+        <!--Text Box for FULL name iput-->
+        <!--<input type="text" id="name" name="fullname" placeholder="Enter your name...">-->
+
+        <!--type="password"     // Hides the users input-->
+        <!--type="date"         // Allows for date to be placed-->
+        <!--
+        The input element should also include both an "id" and a "name" attribute. What is the purpose of each of these attributes?
+
+        id - a unique way to identify an element throughout the webpage. Don't repeat it to avoid conflict;
+
+        name - is to identify the element within the form.        
+        -->
+
+        <!--Added Below during class-->
+        <!--
+        <br/>
+        <label for="first">Preferred Name</label>
+        <input id="preferred" name="first" type="text" />
+        <br>
+        <label for="last">Surname</label>
+        <input id="surname" name="last" type="text" />
+        -->
+
+        <!--Honorifics - Drop down added-->
         <select>
             <option>-- Choose an Honorific --</option>
             <option value="mr">Mr.</option>
@@ -19,6 +43,8 @@
             <option value="mx">Mx.</option>
             <option value="none">None</option>
         </select>
+
+        <!--Honorifics - Radio Selection added (can't choose more than one because they all have the same 'name' value. If they had different 'name' values than more than one can be picked)-->
         <label>
             <input name="honorific" type="radio" />
             Mr.
@@ -42,18 +68,32 @@
             Surname
             <input id="surname" name="last" type="text" />
         </label>
-
+        
+        <!--Checkbox added-->
         <label>
             Is Gigi awesome?
             <input type="checkbox" checked>Yes</input>
             <input type="checkbox">Obviously</input>
+            <!--
+                adding 'checked' into the input tag allows for a default option to be selected
+                
+            <input type="checkbox" name="not awesome" checked/> No
+            -->
+        </label>
+
+        <!--Text Box for name iput-->
+        <br />
+        <label>
+            <!--The 'required' key/word used below makes it so that we require certain fields be filled out in order to submit the data-->
+            <input id="preferred" name="first" type="text" required/> Preferred Name
+        </label>
+        <br />
+        <label>
+            <input id="surname" name="last" type="text" required/> Surname
         </label>
 
         <input type="submit">
-
-
-    </form>
+    </form> <!--tag meant to get information from our users-->
 
 </body>
-
 </html>

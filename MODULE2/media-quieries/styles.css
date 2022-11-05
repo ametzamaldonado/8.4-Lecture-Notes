@@ -11,7 +11,9 @@
     background-color: bisque;
     border:black 2px solid;
 }
-@media (max-width: 767px) {
+
+/* Page Layouts Below */
+@media (max-width: 767px) { /*Anything with an equal &/or smaller width will have the below code apply*/
     .container {
         grid-template-columns: 1fr;
     }
@@ -21,14 +23,14 @@
     }
 
 }
-@media (min-width:768px) {
+@media (min-width:768px) { /*Anything with an equal &/or bigger width will have the below code apply*/
    .box {
      background-color: blue;
      color:white;
      text-align: center;
    } 
 }
-@media (min-width:1200px) {
+@media (min-width:1200px) { /*Anything with an equal &/or bigger width will have the below code apply*/
     .container {
         grid-template-columns: repeat(6, 1fr);
     }

@@ -18,9 +18,18 @@ function contactTemplate (name, telephone, email, notes, type) {
     if (notes) {
       li.append(document.createElement("br"), notes);
     }
-    li.append(document.createElement("br"), type);
+    // li.append(document.createElement("br"), type);
+    // return li;
+  
+    // ------------------ Added for Tim's Exercise: ------------------
+    if (type) {
+      const strong = document.createElement("strong");
+      strong.textContent = "Type of Contact: ";
+      li.append(document.createElement("br"), strong, type);
+    }
     return li;
   }
+  // -----------------------------------------------------------------
   // a fifth input 'type' was added here to update the code
   function generateContact (name, telephone, email, notes, type) {
     const li = contactTemplate(name, telephone, email, notes, type);

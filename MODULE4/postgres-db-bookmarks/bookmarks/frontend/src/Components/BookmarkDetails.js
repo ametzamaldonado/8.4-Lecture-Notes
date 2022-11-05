@@ -14,6 +14,7 @@ function BookmarkDetails() {
       setBookmark(response.data);
     });
   }, [id, navigate, API]);
+
   const deleteBookmark = () => {
     axios
       .delete(`${API}/bookmarks/${id}`)
@@ -25,6 +26,20 @@ function BookmarkDetails() {
   const handleDelete = () => {
     deleteBookmark();
   };
+  /*
+    // OTHER WAY
+    const handleDelete = async () => {
+      try {
+        // happy path! If anything fails in here we're going straight to our catch block
+        const deletedBookmark = await axios.delete(`${API}/bookmarks/${id}`)
+        // we can't move on untill the above promise resolves
+        // if the line above fails we're going to our catch block
+        navigate(`/bookmarks`)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    */
   return (
     <>
       <article>
@@ -58,7 +73,7 @@ function BookmarkDetails() {
         </div>
         <Reviews />
       </article>
-    
+
     </>
   );
 }
